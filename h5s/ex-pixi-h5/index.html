@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <title>团圆，才是中秋</title>
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=640, user-scalable = no">
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <base href="assets/">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=8"/>
 </head>
-<body>
-    <p>pixi h5</p>
+<body code="no">
+<!--loading-->
+<div class="moon-loading">
+    <div class="moon" id="moon"></div>
+    <div class="cloud1"></div>
+    <div class="cloud2"></div>
+    <div class="moon-loading-num">0%</div>
+</div>
+<audio src="audio/bg.mp3" id="bgMusic" loop="loop"></audio>
+<!--loading end-->
+<div class="main"></div>
+<script src="js/common.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/pixi.min.js"></script>
+<script src="js/pixi-display.js"></script>
+<script src="js/lodash.min.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/TimelineMax.min.js"></script>
+<script src="js/script.js?v=18"></script>
 </body>
 </html>

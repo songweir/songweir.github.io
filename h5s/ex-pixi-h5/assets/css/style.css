@@ -1,0 +1,126 @@
+/*reset*/
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td, span{ margin: 0; padding: 0; }
+ul,li{ list-style: none; }
+a,img{ display: inline-block; *display: inline; }
+a{ text-decoration: none; }
+img{ vertical-align: top; border: none; }
+body{ -webkit-tap-highlight-color: transparent; background: #061331; }
+html,body{ width: 100%; height:100%; font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif; }
+body{ -wibkit-touch-callout: none; -webkit-user-select: none; }
+/*loading*/
+.moon-loading{
+    width: 640px;
+    height: 1040px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    z-index: 100;
+    background: #061331 url(../img/loading-bg.jpg?v=4) no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    overflow: hidden;
+    /*display: none;*/
+}
+.moon-loading-num{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    top: 660px;
+}
+.moon{
+    transition: all 0.5s;
+    width: 289px;
+    height: 292px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 338px;
+    background: url(../img/moon.png?v=4) no-repeat;
+}
+.moon.active{
+    -webkit-animation: moon 9s steps(8,start) forwards;
+}
+@-webkit-keyframes moon {
+    0%{
+        background-position: 289px 0;
+    }
+    100%{
+        background-position: -2023px 0;
+    }
+}
+.cloud1{
+    width: 1040px;
+    height: 100%;
+    position: absolute;
+    left: -150px;
+    top: 0;
+    background: url(../img/cloud1.png?v=4) no-repeat top left;
+    -webkit-animation: cloud1 3s linear infinite alternate;
+}
+@keyframes cloud1 {
+    0%{
+        -webkit-transform: translateX(0);
+    }
+    100%{
+        -webkit-transform: translateX(-50px);
+    }
+}
+.cloud2{
+    width: 640px;
+    height: 100%;
+    position: absolute;
+    top: 174px;
+    left: -280px;
+    background: url(../img/cloud2.png?v=4) no-repeat;
+    -webkit-animation: cloud2 5s linear infinite alternate;
+}
+@keyframes cloud2 {
+    0%{
+        -webkit-transform: translateX(0);
+    }
+    100%{
+        -webkit-transform: translateX(130px);
+    }
+}
+/*内容页*/
+canvas{
+    position: absolute;
+    top: 0;
+    height: 1040px;
+    margin: 0 auto;
+}
+.main{
+    width: 640px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    background: #000 url(../img/bg.jpg?v=4) no-repeat;
+    -webkit-background-size: 646.2px 1040px;
+    background-size: 646.2px 1040px;
+    overflow: hidden;
+}
+
+
+/* for responsive ######################################################################################## responsive */
+@media (max-height: 980px) {
+    .scale {
+    	-webkit-transform: scale(0.9);
+    	-ms-transform: scale(0.9);
+        transform: scale(0.9);
+    } 
+}
+@media (max-height: 880px) {
+    .scale {
+    	-webkit-transform: scale(0.8);
+    	-ms-transform: scale(0.8);
+        transform: scale(0.8); 
+    } 
+}

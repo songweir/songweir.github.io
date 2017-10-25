@@ -9,8 +9,9 @@
 文本填充属性：fillStyle
 描边属性：strokeStyle
 及方法：
-fillText(),strokeText(),这些不做过多的解释，后面章节会详细探讨，
-问题：
+fillText(),strokeText(),这些不做过多的解释，后面章节会详细探讨。
+
+### 思考：
 1. fillStyle,strokeStyle如何使用渐变色，图片
 2. 如何计算文字的宽高，来时文本水平垂直居中
 3. 在font 中如何使用自定义字体

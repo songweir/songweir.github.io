@@ -1,8 +1,8 @@
 ## 第一章
 在canvas 中显示字符
-1.document.getElementById()获取canvas的引用
-2.使用canvas对象上的getContext('2d')方法，获取绘图环境对象
-3.然后进行绘制
+1. document.getElementById()获取canvas的引用
+2. 使用canvas对象上的getContext('2d')方法，获取绘图环境对象
+3. 然后进行绘制
 
 绘图会使用绘图环境对象的一些属性和方法，这使用了
 设置字体类型大小的属性：font

@@ -1,5 +1,5 @@
 ## 第一章
-在canvas 中显示字符
+### 一、在canvas 中显示字符
 1. document.getElementById()获取canvas的引用
 2. 使用canvas对象上的getContext('2d')方法，获取绘图环境对象
 3. 然后进行绘制
@@ -13,9 +13,9 @@
 描边属性：strokeStyle
 
 及方法：
-fillText(),strokeText(),这些不做过多的解释，后面章节会详细探讨。
+fillText()对应fillStyle属性,strokeText()对应strokeStyle属性,这些不做过多的解释，后面章节会详细探讨。
 
-### 思考：
+#### 思考：
 1. fillStyle,strokeStyle如何使用渐变色，图片
 2. 如何计算文字的宽高，来时文本水平垂直居中
 3. 在font 中如何使用自定义字体
@@ -26,5 +26,4 @@ fillText(),strokeText(),这些不做过多的解释，后面章节会详细探�
 2. 使用fontfaceobserver js脚本，判断字体是否加载完成，加载完成后使用canvas 设置字体
 [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example1/example1.html)
 [参考相关资料](https://www.w3cplus.com/css/font-display-masses.html)
-
 

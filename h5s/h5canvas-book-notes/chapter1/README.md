@@ -1,5 +1,5 @@
 ## 第一章
-### 一、在canvas 中显示字符
+### 1.在canvas 中显示字符
 1. document.getElementById()获取canvas的引用
 2. 使用canvas对象上的getContext('2d')方法，获取绘图环境对象
 3. 然后进行绘制

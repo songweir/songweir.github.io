@@ -19,6 +19,7 @@ fillText(),strokeText(),这些不做过多的解释，后面章节会详细探�
 第三个问题通过查找相关资料解决方案如下：
 1. 先使用css @font-face 设置自定义字体
 2. 使用fontfaceobserver js脚本，判断字体是否加载完成，加载完成后使用canvas 设置字体
+
 ![示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example1/example1.html)
 ![参考资料](https://www.w3cplus.com/css/font-display-masses.html)
 

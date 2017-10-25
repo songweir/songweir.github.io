@@ -17,7 +17,7 @@ fillText()对应fillStyle属性,strokeText()对应strokeStyle属性,这些不做
 
 #### 思考：
 1. fillStyle,strokeStyle如何使用渐变色，图片
-2. 如何计算文字的宽高，来时文本水平垂直居中
+2. 如何计算文字的宽高，来使文本水平垂直居中
 3. 在font 中如何使用自定义字体
 
 前两个问题书中后面会哟解答

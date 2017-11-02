@@ -28,3 +28,21 @@ fillText()对应fillStyle属性,strokeText()对应strokeStyle属性,这些不做
 [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example1/example1.html)
 [参考相关资料](https://www.w3cplus.com/css/font-display-masses.html)
 
+
+
+### canvas元素的大小与绘图表面的大小
+canvas 有两套尺寸，一个是元素尺寸，一个是绘图表面尺寸
+元素尺寸可以通过css来设置，
+绘图表面尺寸通过属性width/height 来设置（属性width/height也影响元素尺寸）,也就是元素width/height 会同时影响这两个尺寸
+默认情况下不设置以上两个尺寸，canvas 默认两个尺寸是300*150
+根据上面的两个尺寸会有3中情况：
+1. 两种尺寸相同，这时什么都不会改变
+2. 元素尺寸大于绘图尺寸，浏览器会对绘图表面进行放大，使其符合元素尺寸，这种缩放会导致绘图表面进行放大（会导致模糊）
+3. 元素尺寸小于绘图尺寸，浏览器会对绘图表面进行缩小，使其符合元素尺寸，这种缩放会导致绘图便面进行缩小（图像更加清晰）
+
+#### 问题
+在手机端，微信内置浏览器下，动态修改canvas.width/canvas.height, 导致空白。手指移动就显示了，针对写文字，很奇怪。
+
+#### 思考：
+1. 手机上缩放形式 viewport [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example2/demo.html)
+

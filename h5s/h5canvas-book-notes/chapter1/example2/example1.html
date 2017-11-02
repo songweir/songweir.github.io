@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face { 
+            font-family: 'MyWebFont';
+            font-weight: 400; 
+            font-style: normal; 
+            src: url('hdft.ttf') format('truetype');
+            font-display: swap; 
+        }   
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #ddd;
+        }
+        #canvas {
+            background: #fff;
+            /* margin: 10px;
+            padding: 10px;
+            border: thin inset #aaa; */
+        }
+    </style>
+    <script src="fontfaceobserver.js"></script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function(){
+            var font = new FontFaceObserver('MyWebFont');
+            var canvas = document.getElementById('canvas');
+            canvas.width = window.innerWidth*2;
+            canvas.height = window.innerHeight*2;
+            canvas.style.width = window.innerWidth +'px';
+            canvas.style.height = window.innerHeight+'px'
+            // canvas.style.transform = 'scale(0.5)';
+            // canvas.style.transformOrigin = '0 0';
+            font.load().then(function() {
+                console.log('My Family has loaded');
+                context = canvas.getContext('2d');
+
+                //如何使用外部字体？
+                //1.先使用css @font-face 设置自定义字体
+                //目前知道唯一可靠的方法，使用fontfaceobserver js脚本，判断字体是否加载完成，加载完成后在使用canvas 设置字体
+                //参考资料https://www.w3cplus.com/css/font-display-masses.html
+
+                context.font = '38pt MyWebFont';
+                context.fillStyle = 'cornflowerblue';
+                context.strokeStyle = 'blue';
+                
+                context.fillText('中国', canvas.width/2 - 150, canvas.height/2 + 15);
+                context.strokeText('中国', canvas.width/2 - 150, canvas.height/2 + 15);            
+            }, function(){
+                console.log('Font is not available')
+            });
+
+            
+        }
+    </script>
+</body>
+</html>

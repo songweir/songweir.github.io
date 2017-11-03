@@ -50,15 +50,10 @@ canvas 有两套尺寸，一个是元素尺寸，一个是绘图表面尺寸
 ### canvas元素提供的API
 canvas元素只提供了连个属性和3个方法的API
 **属性：**
-
 width
-
 height
-
 **方法：**
-
 getContext(): 返回绘图环境对象
-
 toDataURL(type, quality): 返回一个数据地址（data RUL）,type指定图片类型，例如：image/jpeg或image/png,不指定第一个参数，默认使用image/png。第二个参数必须是0~1.0之间的double值，他表示图片质量,**第二个参数只对第一个参数为image/jpeg起作用(或image/webp)**。
 
 toBlob(callback, type, args...): 返回Blob格式的图片，Blob是一种二进制格式（表示二进制大对象），不限于存储图片。第一个参数是回调，说明toBlob是异步的，浏览器会把blob的引用传入回调，第二个第三个参数，分别是图片类型和图片质量(图片质量同样对image/png不起作用)。

@@ -37,7 +37,7 @@ canvas 有两套尺寸，一个是元素尺寸，一个是绘图表面尺寸
 默认情况下不设置以上两个尺寸，canvas 默认两个尺寸是300*150
 根据上面的两个尺寸会有3中情况：
 1. 两种尺寸相同，这时什么都不会改变
-2. 元素尺寸大于绘图尺寸，浏览器会对绘图表面进行放大，使其符合元素尺寸，这种缩放会导致绘图表面进行放大（会导致模糊）
+2. 元素尺寸大于绘图尺寸，浏览器会对绘图表面进行拉伸，使其符合元素尺寸，这种缩放会导致绘图表面进行放大，比如原本是300 * 150，拉伸后就变成我了600*300 像素
 3. 元素尺寸小于绘图尺寸，浏览器会对绘图表面进行缩小，使其符合元素尺寸，这种缩放会导致绘图便面进行缩小（图像更加清晰）
 
 #### 问题
@@ -46,3 +46,20 @@ canvas 有两套尺寸，一个是元素尺寸，一个是绘图表面尺寸
 #### 思考：
 1. 手机上缩放形式 viewport [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example2/demo.html)
 
+
+### canvas元素提供的API
+canvas元素只提供了连个属性和3个方法的API
+**属性：**
+width
+height
+**方法：**
+getContext(): 返回绘图环境对象
+toDataURL(type, quality): 返回一个数据地址（data RUL）,type指定图片类型，例如：image/jpeg或image/png,不指定第一个参数，默认使用image/png。第二个参数必须是0~1.0之间的double值，他表示图片质量,**第二个参数只对第一个参数为image/jpeg起作用(或image/webp)**。
+
+toBlob(callback, type, args...): 返回Blob格式的图片，Blob是一种二进制格式（表示二进制大对象），不限于存储图片。第一个参数是回调，说明toBlob是异步的，浏览器会把blob的引用传入回调，第二个第三个参数，分别是图片类型和图片质量(图片质量同样对image/png不起作用)。
+ [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example3/example.html)
+ [参考资料](http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/)
+
+ #### 思考
+ 1. window.URL
+ 2. blob

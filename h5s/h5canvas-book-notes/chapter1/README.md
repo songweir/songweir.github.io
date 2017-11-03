@@ -69,4 +69,10 @@ toBlob(callback, type, args...): 返回Blob格式的图片，Blob是一种二进
  1. window.URL
  2. blob
 
-
+### 绘图环境所有属性
+绘图环境属性并没有多少，下面全列出来：
+1. canvas: 指向绘图环境所属的canvas对象，我们可以通过这个属性调用对象属性方法（widht,height, toDataURL,toBlob）
+2. fillStyle: 后续的**图形**填充操作中所使用的颜色、渐变色或图案
+3. font: 作用于绘图环境的fillText()或strokeText()方法时，所使用的字型
+4. globalAlpha: 全局透明设定，取值0~1.0
+5. globalCompositeOperation: 将某个物体绘制在其他物体之上时，所采用的绘制方式

@@ -49,11 +49,19 @@
                 //目前知道唯一可靠的方法，使用fontfaceobserver js脚本，判断字体是否加载完成，加载完成后在使用canvas 设置字体
                 //参考资料https://www.w3cplus.com/css/font-display-masses.html
 
+                context.globalAlpha = 0.5;
+
                 context.font = '38pt MyWebFont';
                 context.fillStyle = 'cornflowerblue';
                 context.strokeStyle = 'blue';
                 context.fillText('中国', canvas.width/2 - 150, canvas.height/2 + 15);
-                context.strokeText('中国', canvas.width/2 - 150, canvas.height/2 + 15);                    
+                context.strokeText('中国', canvas.width/2 - 150, canvas.height/2 + 15); 
+                context.globalAlpha = 1;
+                context.font = '38pt MyWebFont';
+                context.fillStyle = 'red';
+                context.strokeStyle = 'red';
+                context.fillText('宋振鹏', 50, 50);
+                context.strokeText('宋振鹏', 50, 50);                                     
                 // setTimeout(function(){
                 //     context.fillText('中国', canvas.width/2 - 150, canvas.height/2 + 15);
                 //     context.strokeText('中国', canvas.width/2 - 150, canvas.height/2 + 15);    

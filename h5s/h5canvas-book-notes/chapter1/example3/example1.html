@@ -23,16 +23,15 @@
             console.log(context.canvas.width, context.canvas.height);
 
             sourceIn();
-
-            context.font = '30pt Arial';
+            context.save();
+            context.font = '30pt Arial';            
             context.globalAlpha = 0.6;
             context.fillStyle = 'red';
             context.strokeStyle = 'red';
             
             context.fillText('测试', 100, 100);
-            // context.globalCompsiteOperation  = 'copy';
             context.strokeText('测试', 100, 100);
-
+            context.restore();
 
             //globalCompsiteOperation
             //globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有）的图像上。
@@ -53,7 +52,9 @@
 
             context.globalAlpha = 1;
             context.font = '18pt Arial';   
+            
             //1.source-over  
+            context.save();
             context.fillStyle = 'black';                
             context.fillText('1.source-over', 20, 180);
 
@@ -62,8 +63,9 @@
             context.globalCompositeOperation  = 'source-over';        
             context.fillStyle = 'blue';
             context.fillRect(70, 220, 100, 40);   
-
+            context.restore();
             //2.source-atop 
+            context.save();
             context.fillStyle = 'black';                
             context.fillText('2.source-atop', 220, 180);
 
@@ -72,27 +74,33 @@
             context.globalCompositeOperation = 'source-atop';//影响后续所有绘图
             context.fillStyle = 'blue';
             context.fillRect(270, 220, 100, 40);
-            context.globalCompositeOperation = 'source-over';     
+            context.restore();
  
             //3.source-in
+            context.save();
             context.fillStyle = 'black';                
             context.fillText('3.source-in', 420, 180); 
+            // context.fillStyle = 'red';
+            // context.fillRect(420, 200, 100, 40);
+            // context.globalCompositeOperation = 'source-in';
+            // context.fillStyle = 'blue';
+            // context.fillRect(470, 220, 100, 40);    
+            context.restore();              
             function sourceIn(){
                 context.save();
-                
                 context.fillStyle = 'red';
                 context.fillRect(420, 200, 100, 40);
                 context.globalCompositeOperation = 'source-in';
                 context.fillStyle = 'blue';
-                context.fillRect(470, 220, 100, 40); 
-
-                context.restore();   
-                // context.globalCompositeOperation = 'source-over';                            
+                context.fillRect(470, 220, 100, 40);                 
+                context.restore();                            
             }
 
             //4.source-out
+            context.save();
             context.fillStyle = 'black';                 
-            context.fillText('4.source-out', 620, 180);                      
+            context.fillText('4.source-out', 620, 180); 
+            context.restore();                     
         }
     </script>
 </body>

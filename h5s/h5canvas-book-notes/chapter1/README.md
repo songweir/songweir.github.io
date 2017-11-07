@@ -75,4 +75,25 @@ toBlob(callback, type, args...): 返回Blob格式的图片，Blob是一种二进
 2. fillStyle: 后续的**图形**填充操作中所使用的颜色、渐变色或图案
 3. font: 作用于绘图环境的fillText()或strokeText()方法时，所使用的字型
 4. globalAlpha: 全局透明设定，取值0~1.0
-5. globalCompositeOperation: 将某个物体绘制在其他物体之上时，所采用的绘制方式
+5. globalCompositeOperation: 将某个物体绘制在其他物体之上时，所采用的绘制方式  [示例](https://songweir.github.io/h5s/h5canvas-book-notes/chapter1/example3/example2.html)
+6. lineCap: 如何绘制线段的端点，有3个可选，butt,round及square。默认值是butt
+7. lineWidth: 线段屏幕像素宽度，它必须是个非负，非无穷的double,默认是1.0
+8. lineJoin: 在两条线相交是如何绘制焦点，可取值：bevel,round,miter。
+9. miterLimit: 如何绘制miter形式的线段焦点
+10. shadowBlur: 如何延伸阴影效果。值越高，阴影效果延伸得越远。改值不是指阴影的像素长度，而是指高斯模糊方程中的参数
+11. shadowColor: 使用何种颜色绘制阴影
+12. shadowOffsetX: 以像素为单位，指定了阴影效果的水平方向偏移量
+13. shadowOffsetY: 以像素为单位，指定了阴影效果的垂直方向偏移量
+14. strokeStyle: 指定对路径描边是所用的绘制风格，如颜色，渐变色或图案
+15. textAlign: 所画文本水平对齐方式
+16. textBaseline: 所画文本垂直对齐方式
+
+#### 思考
+1. save,restore,如何使用
+2. chrome 性能分析如何使用
+3. 简单的绘制一个钟
+
+
+
+### 鼠标（touch）转换为canvas 坐标， 及事件研究
+

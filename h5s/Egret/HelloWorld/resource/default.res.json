@@ -1,0 +1,35 @@
+{
+	"groups": [
+		{
+			"keys": "hero-01,hero-02,hero-03,hero-04,description_json",
+			"name": "heroes"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/hero-02.png",
+			"type": "image",
+			"name": "hero-02"
+		},
+		{
+			"url": "assets/hero-01.png",
+			"type": "image",
+			"name": "hero-01"
+		},
+		{
+			"url": "assets/hero-04.png",
+			"type": "image",
+			"name": "hero-04"
+		},
+		{
+			"url": "assets/hero-03.png",
+			"type": "image",
+			"name": "hero-03"
+		},
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		}
+	]
+}

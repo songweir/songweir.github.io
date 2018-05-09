@@ -64,7 +64,7 @@ android始终不能自动播放，不多说。值得一提的是经测现在ios1
 
 ### 小窗口播放，不全屏播放
 ```html
-	<video  src=""  controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
+<video  src=""  controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
 ```
 
 ### 播放开始黑屏问题

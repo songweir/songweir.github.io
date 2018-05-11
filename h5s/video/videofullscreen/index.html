@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>videotfullscreen</title>
     <script src="../libs/jquery-2.1.0.js"></script>
+    <script src="../libs//utils.js"></script>
     <style>
         * {
             margin: 0;
@@ -21,11 +22,32 @@
     </style>
 </head>
 <body>
-    <video id="video" src="../video/video.mp4" style="object-fit:fill" x5-video-player-fullscreen="true" x5-video-player-type="h5" poster="poster.JPG"></video>
+    <video id="video" src="../video/video.mp4" style="object-fit:fill" poster="poster.JPG"></video>
     <script>
-        document.getElementById('video').onclick = function() {
+        var video =  document.getElementById('video')
+        // ios 单击video 不会播放，安卓可以
+        video.onclick = function() {
             this.play();
         }
+        function iosVideo() {
+            video.setAttribute('playsinline', true)
+            video.setAttribute('webkit-playsinline', true)            
+            // iso 通过监听微信自定义事件WeixinJSBridgeReady可以实现自动播放，安卓不行
+            document.getElementById('video').play(); // 在非微信浏览器中播放
+            $(document).on('WeixinJSBridgeReady', function() {// 在微信浏览器中播放
+                document.getElementById('video').play();
+            });    
+        }
+        function androidVideo() {
+            video.setAttribute('x5-video-player-fullscreen', true);
+            video.setAttribute('x5-video-player-type', 'h5');
+        }
+        // 判断ios或安卓
+        if (netease.ua.android) {
+            androidVideo();
+        } else if (netease.ua.ios) {
+            iosVideo();
+        }        
     </script>
 </body>
 </html>

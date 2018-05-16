@@ -30,8 +30,8 @@
             this.play();
         }
         function iosVideo() {
-            video.setAttribute('playsinline', true)
-            video.setAttribute('webkit-playsinline', true)            
+            // video.setAttribute('playsinline', true)
+            // video.setAttribute('webkit-playsinline', true)            
             // iso 通过监听微信自定义事件WeixinJSBridgeReady可以实现自动播放，安卓不行
             document.getElementById('video').play(); // 在非微信浏览器中播放
             $(document).on('WeixinJSBridgeReady', function() {// 在微信浏览器中播放

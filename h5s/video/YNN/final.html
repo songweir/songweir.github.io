@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+	<title>自然力宝宝召集令</title>
+	<meta charset="utf-8" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="dns-prefetch" href="//res.wx.qq.com">
+    <link rel="dns-prefetch" href="//wechat.mgcc.com.cn">
+	<link rel="stylesheet" type="text/css" href="./src/css/style.css" />
+    <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>	
+	<script type="text/javascript" src="./src/js/flexible.js" ></script>
+	<script type="text/javascript" src="./src/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="./libs/base64.min.js"></script>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+            return decodeURI(r[2]);
+            }
+            return null;
+        }   
+        var mpid = 'a48700ea-fa05-4835-a21a-efbd7c446759';
+        var share_pic = 'http://nutricia.mgcc.com.cn/haixuan/src/image/share.png';
+        var share_url = 'http://nutricia.mgcc.com.cn/haixuan/share.html?qd=' + window.localStorage.getItem('qd') + '&imgsrc=' + Base64.encode(window.localStorage.getItem('imgsrc')) + "&uid=" + window.localStorage.getItem('id');
+
+        var weChatUrlBase = 'http://wechat.mgcc.com.cn/wechat/wxapi/jssdkjsonp?mpid=a48700ea-fa05-4835-a21a-efbd7c446759&callback=1234&callurl=';
+        var weChatUrl;
+        var sharetitle = "秀出宝宝满满自然力，快来和我家宝宝一起参加《爸爸去哪儿6》的萌娃海选吧";
+        var sharedesc = "我家宝宝是" +  window.localStorage.getItem('id') + "号萌娃选手";
+        function wechatConfig() {
+            weChatUrl = weChatUrlBase + location.href.replace(/&/g, '@').split('#')[0];
+            $.ajax({
+              type: 'get',
+              url: weChatUrl,
+              dataType: "jsonp",
+              crossDomain: !0,
+              jsonpCallback: "callbackfn",
+              success: function(data) {
+                    var config_obj = data;
+                    // if (config_obj.status == 1) {
+                        if (true){
+                            wx.config({
+                                debug: false,
+                                appId: config_obj.appId,
+                                timestamp: config_obj.timestamp,
+                                nonceStr: config_obj.nonceStr,
+                                signature: config_obj.signature,
+                                jsApiList: [
+                                    // 所有要调用的 API 都要加到这个列表中
+                                    'onMenuShareTimeline',
+                                    'onMenuShareAppMessage'
+                                ]
+                            });
+                            wx.ready(function () {
+                                wx.onMenuShareAppMessage({
+                                    title: sharetitle,
+                                    desc: sharedesc,
+                                    link: share_url.replace(/\@/g, '#'),
+                                    imgUrl: share_pic,
+                                    success: function (res) {
+                                        //$.get('./race.php?a=share');
+                                        _hmt.push(['_trackEvent', '分享', '点击', '分享给朋友']);
+                                    },
+                                    cancel: function (res) {
+                                    },
+                                    fail: function (res) {
+                                    }
+                                });
+
+                                // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+                                wx.onMenuShareTimeline({
+                                    title: sharetitle,
+                                    link: share_url.replace(/\@/g, '#'),
+                                    imgUrl: share_pic,
+                                    success: function (res) {
+                                    	_hmt.push(['_trackEvent', '分享', '点击', '分享到朋友圈']);
+                                    },
+                                    cancel: function (res) {
+                                    },
+                                    fail: function (res) {
+                                    }
+                                });
+                            });
+                            wx.error(function(res){
+                            });
+                    } else {
+                        console.log('获取分享失败')
+                    }
+
+              },
+              error:function(xhr, type) {
+              }
+         });
+        }
+        wechatConfig();
+    </script> 	
+</head>
+<body>
+	<div class="content final">
+        <div class="layer" id="J_layer">
+            <div class="box">
+                <i></i>
+                <p class="txt">成功报名<br>传递自然萌趣</p>
+            </div>
+        </div>
+		<div class="wrap">
+			<div class="topimg"></div>
+			<div class="result">
+				<h6>成功报名！</h6>
+				<p>您的报名编号为:<span class="order"></span>号</p>
+				<div class="wall">
+                    <img id="J_child_poster" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1526542267&di=bcedde6e35da1016851e714c3987a7ea&src=http://imgm.gmw.cn/attachement/jpg/site2/20160330/5870155939007542080.jpg">
+				</div>
+			</div>
+			<div class="dec">如果您的宝宝通过海选<br>相关工作人员会联系您进入现场晋级环节</div>
+			<div class="btns">
+				<a href="javascript:;" id="J_layer_show" class="btn btn_share" ></a>
+			</div>
+		</div>
+		<div class="logo-wrap" id="J_logo"></div>
+        <script>
+            var qd = window.localStorage.getItem("qd");
+            if(qd == 2){
+                $("#J_logo").html('<img src="./src/image/brand_zyyy.png" class="zhongyi">');
+            }else{
+                $("#J_logo").html('<img src="./src/image/yingbeier.png" class="yingbeier">');
+            }
+        </script>
+	</div>
+	<script type="text/javascript" src="./src/js/common.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.order').text(window.localStorage.getItem('id'));
+            $('#J_child_poster').attr("src", window.localStorage.getItem('imgsrc'));
+            $('#J_layer_show').click(function(){
+                $("#J_layer").show();
+            });
+            $("#J_layer").click(function(){
+                $(this).hide();
+            });
+			// $('.wall').css({
+			// 	'background': 'url('+window.localStorage.getItem('imgsrc')+') no-repeat',
+			// 	'background-size': 'cover'
+			// });
+		})
+	</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?09e76d3a6c3299497ee0a17db092498f";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

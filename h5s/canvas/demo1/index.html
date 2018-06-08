@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+/*			background: blue;*/
+		}
+/*		canvas {
+			transform: rotate(-90deg);
+		}*/
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="300"></canvas>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			context.strokeStyle = 'red';
+			context.lineWidth = 10;
+			// context.globalCompositeOperation = "source-atop";	
+			context.beginPath();
+			context.arc(230, 90, 50, 0, Math.PI  * 2, false);
+			context.closePath();
+			context.stroke();
+
+			// context.globalCompositeOperation="destination-over";
+			// context.strokeStyle = 'blue';
+
+			// context.beginPath();
+			// context.arc(230, 90, 50, 0, Math.PI  * 2, false);
+			// context.closePath();
+			// context.stroke();
+
+
+			var timer = setInterval(drawCircle, 10);
+			// drawCircle();
+			var degress = 271;
+			context.strokeStyle = 'rgba(0, 0, 0, 1)';
+			context.lineWidth = 12;			
+			context.globalCompositeOperation = "destination-out";			
+			function drawCircle() {
+				context.beginPath();
+				context.arc(230, 90, 50, (degress -1) * (Math.PI / 180),  degress * (Math.PI / 180), false);		
+				context.closePath();
+				context.stroke();
+				if (degress === 360) {
+					degress = 0;		
+				} else if (degress === 270) {
+					clearInterval(timer);
+				}
+				degress++
+			}
+		}
+	</script>
+</body>
+</html>

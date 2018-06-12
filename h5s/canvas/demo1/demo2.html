@@ -24,7 +24,6 @@
 			context.closePath();
 			context.stroke();
 
-
 			//动态画个圆
 			var timer1 = setInterval(drawCircle1, 10);
 			var degress1 = 1;
@@ -55,12 +54,20 @@
 				degress2++
 			}
 
-			// 倒计时形态
-			// 先画个圆
-			context.beginPath();
-			context.arc(420, 60, 50, 0, Math.PI, true);
-			context.closePath();
-			context.fill();
+			// 逆时针画圆
+			var timer3 = setInterval(drawCircle3, 10);
+			var degress3 = 361;
+			function drawCircle3(){
+				context.beginPath();
+				context.arc(420, 60, 50, (degress3 - 1) * (Math.PI / 180), (degress3 - 2) * (Math.PI / 180), true);
+				context.closePath();
+				context.stroke();
+				console.log(degress3);
+				if (degress3 === 0) {
+					clearInterval(timer3)
+				}
+				degress3--;
+			}
 		}
 	</script>
 </body>

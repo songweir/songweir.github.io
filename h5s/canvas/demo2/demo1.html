@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			
+			context.save();
+			context.fillRect(100, 100, 50, 50);
+
+			context.translate(200, 200);
+			context.rotate(0.7854);
+			context.fillRect(-50, -50, 100, 100);
+
+			context.restore();			
+		}
+	</script>
+</body>
+</html>

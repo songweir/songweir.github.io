@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        button {
+            display: block;
+        }
+        canvas {
+            /* background: red; */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <button id="startAnimation">Start</button>
+    <button id="stopAnimation">Stop</button>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+
+            var canvasWidth = context.canvas.width;
+            var canvasHeight = context.canvas.height;
+
+            var playAnimation = true;
+            var startButton = document.getElementById('startAnimation');
+            var stopButton = document.getElementById('stopAnimation');
+            
+            startButton.style.display = 'none';
+            startButton.onclick = function () {
+                this.style.display = 'none';
+                stopButton.style.display = 'block';
+
+                playAnimation = true;
+                animate();
+            }
+            stopButton.onclick = function () {
+                this.style.display = 'none';
+                startButton.style.display = 'block';
+
+                playAnimation = false;
+            }
+
+            var Shape = function(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+
+                this.radius = Math.random() * 30;
+                this.angle = 0;
+            }
+            var shapes = new Array();
+            
+            for (var i = 0; i < 10; i++) {
+                var x = Math.random() * 200;
+                var y = Math.random() * 250;
+                var width = height = Math.random() * 50;
+                shapes.push(new Shape(x, y, width, height));
+            } 
+
+
+            function animate() {    
+                context.clearRect(0, 0, canvasWidth, canvasHeight);
+                var shapesLenght = shapes.length;
+                for (var i = 0; i < shapesLenght; i++) {
+                    var tmpShape = shapes[i];
+                    var x = tmpShape.x + (tmpShape.radius * Math.cos(tmpShape.angle * (Math.PI/180)));
+                    var y = tmpShape.y + (tmpShape.radius * Math.sin(tmpShape.angle * (Math.PI/180)));
+                    tmpShape.angle += 5;
+                    if (tmpShape.angle > 360) {
+                        tmpShape.angle = 0;
+                    }
+                    context.fillRect(x, y, tmpShape.width, tmpShape.height);
+                }
+                if (playAnimation) {
+                    setTimeout(animate, 33)
+                }         
+            }
+            animate(); 
+           
+        }
+    </script>
+</body>
+</html>

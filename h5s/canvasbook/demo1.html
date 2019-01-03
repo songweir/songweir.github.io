@@ -54,6 +54,8 @@
                 this.y = y;
                 this.width = width;
                 this.height = height;
+                this.reverseX = false;
+                this.reverseY = false;
 
                 this.radius = Math.random() * 30;
                 this.angle = 0;
@@ -73,16 +75,32 @@
                 var shapesLenght = shapes.length;
                 for (var i = 0; i < shapesLenght; i++) {
                     var tmpShape = shapes[i];
-                    var x = tmpShape.x + (tmpShape.radius * Math.cos(tmpShape.angle * (Math.PI/180)));
-                    var y = tmpShape.y + (tmpShape.radius * Math.sin(tmpShape.angle * (Math.PI/180)));
-                    tmpShape.angle += 5;
-                    if (tmpShape.angle > 360) {
-                        tmpShape.angle = 0;
+                    if (!tmpShape.reverseX) {
+                        tmpShape.x += 2;
+                    } else {
+                        tmpShape.x -= 2;
                     }
-                    context.fillRect(x, y, tmpShape.width, tmpShape.height);
+                    if (!tmpShape.reverseY) {
+                        tmpShape.y += 2;
+                    } else {
+                        tmpShape.y -= 2;
+                    }
+                    context.fillRect(tmpShape.x, tmpShape.y, tmpShape.width, tmpShape.height);
+
+                    if (tmpShape.x < 0) {
+                        tmpShape.reverseX = false;
+                    } else if (tmpShape.x + tmpShape.width > canvasWidth) {
+                        tmpShape.reverseX = true;
+                    }
+
+                    if (tmpShape.y < 0) {
+                        tmpShape.reverseY = false;
+                    } else if (tmpShape.y + tmpShape.height > canvasHeight) {
+                        tmpShape.reverseY = true;
+                    }
                 }
                 if (playAnimation) {
-                    setTimeout(animate, 33)
+                    setTimeout(animate, 10)
                 }         
             }
             animate();               

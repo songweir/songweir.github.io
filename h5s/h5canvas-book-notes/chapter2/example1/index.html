@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width=" 500" height="500"></canvas>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+
+            context.fillRect(0, 0, 100, 100);
+            context.fillStyle = 'red';
+            context.fillRect(10, 10, 80, 80);
+
+            context.clearRect(25, 25, 50, 50);
+
+
+            // 宽高任意一个为0时
+
+            context.strokeRect(150, 150, 0, 100); // 宽为零 一条竖线 高为零一条横线
+        
+            // 渐变矩形
+            var gradient = context.createLinearGradient(300, 300, 400, 400);
+
+            gradient.addColorStop(0, 'blue');
+            gradient.addColorStop(0.25, 'white');
+            gradient.addColorStop(0.5, 'purple');
+            gradient.addColorStop(0.75, 'red');
+            gradient.addColorStop(1, 'yellow');
+
+            context.fillStyle = gradient;
+            context.rect(300, 300, 100, 100);
+            context.fill();
+        }
+    </script>
+</body>
+</html>

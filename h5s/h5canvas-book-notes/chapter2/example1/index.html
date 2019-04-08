@@ -12,29 +12,109 @@
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
 
-            context.fillRect(0, 0, 100, 100);
-            context.fillStyle = 'red';
-            context.fillRect(10, 10, 80, 80);
+            // 图形和文本的描边与填充也可以使用图案来进行设置
+            var image = new Image();
+            image.src = 'fill.png';
+            image.onload = function () {
+                var pattern = context.createPattern(image, 'repeat');
+                context.fillStyle = pattern;
+                context.fillRect(0, 0, canvas.width, canvas.height);
 
-            context.clearRect(25, 25, 50, 50);
 
 
-            // 宽高任意一个为0时
+                context.fillRect(0, 0, 100, 100);
+                context.fillStyle = 'red';
+                context.fillRect(10, 10, 80, 80);
 
-            context.strokeRect(150, 150, 0, 100); // 宽为零 一条竖线 高为零一条横线
-        
-            // 渐变矩形
-            var gradient = context.createLinearGradient(300, 300, 400, 400);
+                context.clearRect(25, 25, 50, 50);
 
-            gradient.addColorStop(0, 'blue');
-            gradient.addColorStop(0.25, 'white');
-            gradient.addColorStop(0.5, 'purple');
-            gradient.addColorStop(0.75, 'red');
-            gradient.addColorStop(1, 'yellow');
 
-            context.fillStyle = gradient;
-            context.rect(300, 300, 100, 100);
-            context.fill();
+                // 宽高任意一个为0时
+
+                context.strokeRect(150, 150, 0, 100); // 宽为零 一条竖线 高为零一条横线
+            
+                // 渐变矩形
+                var gradient = context.createLinearGradient(300, 300, 400, 400);
+
+                gradient.addColorStop(0, 'blue');
+                gradient.addColorStop(0.25, 'white');
+                gradient.addColorStop(0.5, 'purple');
+                gradient.addColorStop(0.75, 'red');
+                gradient.addColorStop(1, 'yellow');
+
+                context.fillStyle = gradient;
+                context.rect(300, 300, 100, 100);
+                context.fill();
+
+
+                // 放射渐变
+                // 创建线性渐变需要指定一条渐变线，创建放射渐变需要指定两个圆形
+                // 放射渐变的填充范围仅局限于传递给createRadialGradient()方法的两个圆形所定义的圆区域内
+
+                var radialGradient = context.createRadialGradient(canvas.width / 2, canvas.height, 10, canvas.width / 2, 0, 100);
+                radialGradient.addColorStop(0, 'blue');
+                radialGradient.addColorStop(0.25, 'white');
+                radialGradient.addColorStop(0.5, 'purple');
+                radialGradient.addColorStop(0.75, 'red');
+                radialGradient.addColorStop(1, 'yellow');
+
+                context.fillStyle = radialGradient;
+                context.rect(0, 0, canvas.width, canvas.height);
+                context.fill();
+
+
+                // 总结
+                // 线性渐变需要就是先定一条渐变线，需要4个参数，连个点的坐标 createlinearGradient
+                // 放射渐变 两个圆形，需要6个参数，第一个圆的原点坐标及半径，第二个圆的原点坐标及半径
+                                
+                
+                // 阴影
+                // 在canvas 中不管绘制的是图形，文本，还是图像，都可以通过修改绘图环境中的4个属性来指定阴影效果
+                // shadowColor
+                // shadowOffsetX
+                // shadowOffsetY
+                // shadowBlur
+
+                context.fillStyle = 'red';
+
+                context.save();
+                context.clearRect(0, 300, 200, 200)
+                context.shadowColor = 'rgba(0, 0, 0, 0.7)';
+                context.shadowOffsetX = -5;
+                context.shadowOffsetY = -5;
+                context.shadowBlur = 20;
+                context.fillStyle = 'blue';
+                context.fillRect(50, 310, 100, 100)
+                context.restore();
+                // 描边绘制阴影
+                context.fillRect(20, 420, 50, 50);
+                
+
+
+                // 内嵌阴影
+                // 就是shadowOffsetX, shadowOffsetY, 设置为负值，但是我并不把这个理解为内嵌阴影，我理解为改变阴影的方向
+
+                // 路径， 描边，与填充
+
+
+                // 路径与子路径的理解
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.beginPath();
+                context.rect(10, 10, 100, 100);
+                context.stroke(); 
+                context.closePath();
+
+                context.beginPath();
+                context.rect(150, 150, 100, 100);
+                context.stroke();  
+                context.closePath();
+
+                // 如何理解 canvas 之中只能有一条路径存在
+
+                // 填充路径 “非零环绕规则”
+                
+            }
         }
     </script>
 </body>

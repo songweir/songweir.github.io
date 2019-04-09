@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        canvas {
+            background: #ffffff;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 10px;
+            -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.5);            
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas" width=" 500" height="500"></canvas>
+    <canvas id="canvas" width="1100" height="800"></canvas>
     <script>
         window.onload = function(){
             var canvas = document.getElementById('canvas');
@@ -111,9 +122,102 @@
                 context.closePath();
 
                 // 如何理解 canvas 之中只能有一条路径存在
+                // 我的理解是，canvas beginPaht() 既开启一条路径
+
+
+                // 路径，描边与填充
 
                 // 填充路径 “非零环绕规则”
+                // 路径范围内任意一点，画条超过路径范围的直线，这条直线与路径顺时针相交时加1，逆时针相交时减1，最终不为0 那就是在路径范围内，否自不在，不会被填充。
+                // 坚持自己的计划
+                // canvas 立即生效的方法总共4个，strokeRect(), fillRect(), strokeText(), fillText();
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                // 绘制网格 
+                drawGrid(context, 'lightgray', 10, 10);              
+
+                context.font = '48pt Helvetica';
+                context.strokeStyle = 'blue';
+                context.fillStyle = 'red';
+                context.lineWidth = '2';
+                // Text 
+                context.strokeText('Stroke', 60, 110);
+                context.fillText('Fill', 440, 110); 
+
+                context.strokeText('Stroke & Fill', 650, 110);
+                context.fillText('Stroke & Fill', 650, 110);
+
+                // rect
+                context.lineWidth = '5';
+                context.beginPath();
+                context.rect(80, 150, 150, 100);
+                context.stroke();
+
+                context.beginPath();
+                context.rect(400, 150, 150, 100);
+                context.fill();
+
+                context.beginPath();
+                context.rect(750, 150, 150, 100);
+                context.stroke();
+                context.fill();
+
+                // open arc
+                context.beginPath();
+                context.arc(150, 370, 60, 0, Math.PI * 3/2);// x, y, radius, startAngle, endAngle, anticlockwise
+                context.stroke();
                 
+                context.beginPath();
+                context.arc(475, 370, 60, 0, Math.PI*3/2);
+                context.fill();
+
+                context.beginPath();
+                context.arc(475, 370, 60, 0, Math.PI * 3/2);
+                context.fill();
+
+                context.beginPath();
+                context.arc(820, 370, 60, 0, Math.PI * 3/2);
+                context.stroke();
+                context.fill();
+
+                // closed arcs
+
+                context.beginPath();
+                context.arc(150, 550, 60, 0, Math.PI * 3/2);
+                context.closePath();
+                context.stroke();
+
+                context.beginPath();
+                context.arc(475, 550, 60, 0, Math.PI * 3/2);
+                context.closePath();
+                context.fill();
+
+                context.beginPath();
+                context.arc(820, 550, 60, 0, Math.PI*3/2);
+                context.closePath();
+                context.stroke();
+                context.fill();
+
+            }
+
+            function drawGrid(context, color, stepx, stepy) {
+                context.strokeStyle = color;
+                context.lineWidth = 0.5;
+
+                for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+                    context.beginPath();
+                    context.moveTo(i, 0);
+                    context.lineTo(i, context.canvas.height);
+                    context.stroke();
+                }
+
+                for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+                    context.beginPath();
+                    context.moveTo(0, i);
+                    context.lineTo(context.canvas.width, i);
+                    context.stroke();
+                }
+
             }
         }
     </script>

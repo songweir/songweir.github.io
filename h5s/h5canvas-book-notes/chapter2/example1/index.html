@@ -198,6 +198,48 @@
                 context.stroke();
                 context.fill();
 
+                // rect(), arc(), 用来绘制路径的，没有调用描边和填充时什么都不显示的
+                // 而 strokeRect(),fillRect(), 则是立即生效的方法，既，同时描边绘制矩形
+
+
+                // 路径与子路径
+                // beiginPath(), 清除子路径，开始新的路径，如果不清除会导致，的话就是还在当前路径绘制，所以再次调用描边的话就是在当前路径上的所有的都进行描边
+                // beginPaht() 就是个路径的开始，或者环境的开始，closePath() 意思是否闭合路径，如果没有的话在描边时，就会显示一个没有闭合的形状
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.beginPath();
+                context.rect(10, 10, 100, 100);
+                context.stroke();
+
+                context.beginPath();
+                context.strokeStyle = 'red';
+                context.rect(50, 50, 100, 100);
+                context.stroke();
+
+
+                // 实现一个剪纸效果
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                // 绘制网格 
+                drawGrid(context, 'lightgray', 10, 10);                         
+
+                context.shadowColor = 'rgba(0, 0, 0, 0.8)';
+                context.shadowOffsetX = 12;
+                context.shadowOffsetY = 12;
+                context.shadowBlur = 15;
+
+                context.fillStyle = 'rgba(100, 140, 230, 0.5)';
+                context.strokeStyle = 'red';
+                context.beginPath();
+                context.arc(400, 400, 100, 0, Math.PI * 2, true);
+
+                context.arc(400, 400, 50, 0, Math.PI * 2, false);
+
+                context.closePath();
+                context.stroke();
+                context.fill();
+
+                // 注意两个圆描边是之间有个线：
+                // 当使用arc()方法向当前路径中增加子路径时，该方法必须将上一条子路径的终点与所画弧的起点相连
             }
 
             function drawGrid(context, color, stepx, stepy) {
